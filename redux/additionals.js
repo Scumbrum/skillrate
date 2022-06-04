@@ -11,7 +11,7 @@ export function parseCookie(cookie) {
     return cookie.split(";")
     .map(cookie => cookie.split("="))
     .reduce((array, nextCookie) => {
-        array[nextCookie[0].trim()] = nextCookie[1].trim()
+        array[nextCookie[0]?.trim()] = nextCookie[1]?.trim()
         return array},
     {})
 }

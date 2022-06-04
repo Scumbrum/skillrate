@@ -1,6 +1,6 @@
 import React from "react";
 import  ReactDOM  from "react-dom";
-import {applyMiddleware, compose, createStore} from "redux"
+import {applyMiddleware, compose} from "redux"
 import { Provider} from "react-redux";
 import "../Styles/site.less"
 import appReducer from "../redux/AppReducer";
