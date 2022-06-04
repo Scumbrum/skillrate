@@ -1,0 +1,189 @@
+
+.input_window {
+    top:0;
+    left:0;
+    position: fixed;
+    z-index: 2;
+    height: 100% + 5vh;
+    width: 100%;
+    background-color: @black_color_transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.frame {
+    min-height: 50px;
+    width: fit-content;
+    width: 70%;
+    background: @main_color;
+    border: .2em solid @third_color;
+    overflow-y: scroll;
+    &_name {
+        color: @second_color;
+        font-size: 6vw;
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        padding: 3%;
+        box-sizing: border-box;
+        &.zero {
+            padding: 0;
+        }
+        & .auth {
+            font-size: 3vw;
+            display: flex;
+            background: none;
+            color: @second_color;
+            padding: 2% 2%;
+            box-sizing: border-box;
+            align-items: center;
+            transition-duration: .5s;
+            cursor: pointer;
+        }
+        & .active {
+            font-size: 6vw;
+            background-color: @second_color;
+            color: @main_color;
+        }       
+    }
+
+    &_body {
+        width: 100%;
+        background-color: @second_color;
+        padding: 3% 4% 7%;
+        box-sizing: border-box;
+        & ul {
+            list-style: none;
+        }
+        & li {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 4vw;
+            color: @main_color;
+            margin-bottom: 3vh;
+        }
+        & h3 {
+            color: @main_color;
+            font-size: 3vw;
+        }
+    }
+
+    &_delete {
+        cursor: pointer;
+    }
+
+    &_input {
+        .base_input();
+        &-name {
+            .base_input();
+            background-color: @main_color;
+            color: @third_color;
+            width: 50%;
+        }
+
+        &-value {
+            .base_input();
+            background-color: @main_color;
+            color: @third_color;
+            width: 20%
+        }
+    }
+}
+
+.save_button {
+    .main_button();
+    margin-top: 8vh;
+}
+
+.requirement_button {
+    .lite_button();
+    display: block;
+    margin: 4vh auto 0;
+}
+
+.cancel_button:extend(.save_button) {
+
+}
+
+.controlls {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
+
+.no-scroll {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.down {
+    z-index: 1;
+}
+.loader {
+    height: 50px;
+    width: 10%;
+    position: absolute;
+    background: @second_color;
+    animation: moving 2s infinite ease-in-out;
+}
+
+@keyframes moving {
+    0% {
+        transform: translate(0);
+    }
+    50% {
+        transform: translate(calc(70vw - 100%));
+    }
+    100% {
+        transform: translate(0);
+    }
+
+}
+
+@media (max-width:600px) {
+    .input_window .frame {
+        width: 95%;
+        &_name {
+            flex-direction: column;
+            align-items: center;
+            font-size: 8vw;
+        }
+        &_input {
+            width: 90%;
+            &-name {
+                width: 98%;
+            }
+            &-value {
+                width: 98%;
+                margin-left: auto;
+            }
+        }
+        &_body {
+            & li {
+                border: 1vmin solid @third_color;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            & h3 {
+                font-size: 8vw;
+            }
+        }
+        &_delete {
+            grid-column: 1/3;
+            display: flex;
+            justify-content: center;
+            background-color: @main_color;
+            color: @second_color;
+            width: 100%;
+            font-size: 8vw;
+            margin-top: 2vh;
+        }
+    }
+    
+    .controlls {
+        width: 80%;
+    }
+}
