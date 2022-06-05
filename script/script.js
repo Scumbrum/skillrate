@@ -9,10 +9,9 @@ import {saveRequest, sendDataRequest, sendReafreshRequest} from "../redux/action
 import thunk from "redux-thunk"
 import { parseCookie } from "../redux/additionals";
 
-const store = createStore(appReducer, compose(
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-))
+const store = createStore(appReducer, 
+    applyMiddleware(thunk)
+)
 const {refreshToken} = parseCookie(document.cookie)
 const accessToken = localStorage.getItem("accessToken")
 
